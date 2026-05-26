@@ -50,8 +50,8 @@ XLM-RoBERTa 분류기 → REAL / FAKE
 │   ├── 01_subtitle_extraction.ipynb       # YouTube URL → .txt 자막
 │   └── 02_fake_news_classification.ipynb  # 자막 .txt → REAL/FAKE 예측
 ├── data/
+│   ├── dataset.zip                         # fake_or_real_news.csv (학습용, 12MB 바이너리)
 │   └── sample_input.txt                    # 추론 테스트용 예시 자막
-├── dataset.zip                              # fake_or_real_news.csv (학습용, 12MB 바이너리)
 ├── requirements.txt
 ├── .gitignore
 └── README.md
@@ -73,7 +73,7 @@ XLM-RoBERTa 분류기 → REAL / FAKE
   </a>
 
 런타임 유형은 **GPU (T4)** 로 설정해주세요. 학습 데이터(`fake_or_real_news.csv`)는
-루트의 `dataset.zip` 압축을 풀거나, Colab 세션에 직접 업로드하면 됩니다.
+`data/dataset.zip` 압축을 풀거나, Colab 세션에 직접 업로드하면 됩니다.
 
 ### 2. 로컬에서 실행
 
@@ -81,8 +81,8 @@ XLM-RoBERTa 분류기 → REAL / FAKE
 git clone https://github.com/jumincho/youtube-fake-news-detector.git
 cd youtube-fake-news-detector
 
-# 학습 데이터 압축 해제 (dataset.zip은 루트에 위치)
-unzip dataset.zip -d data/
+# 학습 데이터 압축 해제
+unzip data/dataset.zip -d data/
 
 # 의존성 설치 (CUDA 가능 환경 권장)
 pip install -r requirements.txt
@@ -94,7 +94,7 @@ jupyter lab notebooks/
 
 ## 데이터셋
 
-- **학습 데이터**: 루트의 `dataset.zip` 안의 `fake_or_real_news.csv`
+- **학습 데이터**: `data/dataset.zip` 안의 `fake_or_real_news.csv`
   (약 6,300건의 영문 뉴스 기사, `title`, `text`, `label(REAL/FAKE)` 컬럼)
 - **추론 예시**: `data/sample_input.txt` — 노트북 1에서 만들어 노트북 2에 입력으로 넣을 수 있는 자막 텍스트 샘플
 
